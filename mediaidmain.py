@@ -14,9 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-
-
-
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
@@ -177,4 +174,4 @@ def register():
     return render_template("signup.html", user=current_user)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
