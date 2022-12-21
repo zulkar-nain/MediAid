@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Home | MediAid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A platform for seeking medical help assistance" name="description" />
+    <meta content="Zulkar Nain" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static',filename='./assets/images/favicon.ico')}}">
+
+    <!--Swiper slider css-->
+    <link href="{{ url_for('static',filename='./assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- Layout config Js -->
+    <script src="{{ url_for('static',filename='./assets/js/layout.js')}}"></script>
+    <script src="{{ url_for('static',filename='./assets/libs/flatpickr/flatpickr.min.js')}}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{{ url_for('static',filename='./assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ url_for('static',filename='./assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ url_for('static',filename='./assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{{ url_for('static',filename='./assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+    <!-- Begin page -->
+    <div class="layout-wrapper landing">
+        <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{{url_for('static',filename='assets/images/logo-dark.png')}}" class="card-logo card-logo-dark" alt="logo dark" height="60">
+                    <img src="{{url_for('static',filename='assets/images/logo-light.png')}}" class="card-logo card-logo-light" alt="logo light"
+                        height="17">
+                </a>
+                <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#hero">Home</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">Reviews</a>
+                        </li>
+                        {% endif %}
+                        
+                        
+                    </ul>
+
+                    <div class="">
+                        {% if current_user.is_authenticated %}
+                        <a href="/logout" class="btn btn-primary">Sign out</a>
+
+                        {% else %}
+                        <a href="/login" class="btn btn-link fw-medium text-decoration-none text-dark">Sign
+                            in</a>
+                        <a href="/register" class="btn btn-primary">Sign Up</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <!-- end navbar -->
+
+        <!-- start hero section -->
+        <section class="section pb-0 hero-section" id="hero">
+            <div class="bg-overlay bg-overlay-pattern"></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-sm-10">
+                        <div class="text-center mt-lg-5 pt-5">
+                            <h1 class="display-6 fw-semibold mb-3 lh-base">The better way to get to know more about Healthcare with <span
+                                    class="text-success">MediAid </span></h1>
+                            <p class="lead text-muted lh-base">A platform for seeking medical help assistance</p>
+
+                            <div class="d-flex gap-2 justify-content-center mt-4">
+                                <a href="{{url_for("medisugg")}}" class="btn btn-primary">Get assistance Right Now<i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                <a href="{{url_for("login")}}" class="btn btn-danger">Sign In <i class="ri-eye-line align-middle ms-1"></i></a>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+            <!-- end container -->
+            
+            <!-- end shape -->
+        </section>
+        <!-- end hero section -->
+
+        <!-- start client section -->
+        
+        <!-- end client section -->
+
+        <!-- start services -->
+        
+        <!-- end services -->
+
+        <!-- start features -->
+        
+
+        <!-- start features -->
+        
+        <!-- end features -->
+
+        <!-- start plan -->
+        
+        <!-- end plan -->
+
+        <!-- start faqs -->
+        
+        <!-- end faqs -->
+
+        <!-- start review -->
+        
+        <!-- end review -->
+
+        <!-- start counter -->
+        <section class="py-5 position-relative bg-light">
+            <div class="container">
+                <div class="row text-center gy-4">
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="100">0</span>+</h2>
+                            <div class="text-muted">Doctors registered</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="24">0</span>+</h2>
+                            <div class="text-muted">Hospital Registered</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="2">0</span>k</h2>
+                            <div class="text-muted">Clients</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-3 col-6">
+                        <div>
+                            <h2 class="mb-2"><span class="counter-value" data-target="1">0</span></h2>
+                            <div class="text-muted">Employees</div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end counter -->
+
+        <!-- start Work Process -->
+        
+        <!-- end Work Process -->
+
+        <!-- start team -->
+        
+        <!-- end team -->
+
+        <!-- start contact -->
+        
+        <!-- end contact -->
+
+        <!-- start cta -->
+        
+        <!-- end cta -->
+
+        <!-- Start footer -->
+        <footer class="custom-footer bg-dark py-2 position-relative">
+            <div class="container">
+                <div class="row">
+                    
+
+                    <div class="col-lg-10 mt-4">
+                        <div class="row">
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Company</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{{url_for("index")}}">About Us</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-4 mt-4">
+                                <h5 class="text-white mb-0">Support</h5>
+                                <div class="text-muted mt-3">
+                                    <ul class="list-unstyled ff-secondary footer-list">
+                                        <li><a href="{{url_for("index")}}">FAQ</a></li>
+                                        <li><a href="{{url_for("index")}}">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row text-center text-sm-start align-items-center mt-5">
+                    <div class="col-sm-6">
+
+                        <div>
+                            <p class="copy-rights mb-0">
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> © Zulkar Nine. All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+
+    </div>
+    <!-- end layout wrapper -->
+
+
+    <!-- JAVASCRIPT -->
+    <script src="{{url_for('static',filename='./assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/js/plugins.js')}}"></script>
+    
+
+    <!--Swiper slider js-->
+    <script src="{{url_for('static',filename='./assets/libs/swiper/swiper-bundle.min.js')}}"></script>
+
+    <!-- landing init -->
+    <script src="{{url_for('static',filename='./assets/js/pages/landing.init.js')}}"></script>
+</body>
+
+</html>

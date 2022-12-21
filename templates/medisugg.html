@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Basic Suggestion | MediAid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Suggestion Center MediAid" name="description" />
+    <meta content="MediAid" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{url_for('static',filename='assets/images/favicon.ico')}}">
+
+    <!-- Layout config Js -->
+    <script src="{{url_for('static',filename="assets/js/layout.js")}}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{{url_for('static',filename="assets/css/bootstrap.min.css")}}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{url_for('static',filename="assets/css/icons.min.css")}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{url_for('static',filename="assets/css/app.min.css")}}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{{url_for('static',filename='assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    
+    <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{{url_for('static',filename='assets/images/logo-dark.png')}}" class="card-logo card-logo-dark" alt="logo dark" height="30">
+                <img src="{{url_for('static',filename='assets/images/logo-light.png')}}" class="card-logo card-logo-light" alt="logo light"
+                    height="17">
+            </a>
+            <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{url_for('index')}}">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Reviews</a>
+                    </li>
+                    {% endif %}
+                    
+                    
+                </ul>
+
+                <div class="">
+                    {% if current_user.is_authenticated %}
+                    <a href="/logout" class="btn btn-primary">Sign out</a>
+
+                    {% else %}
+                    <a href="/login" class="btn btn-link fw-medium text-decoration-none text-dark">Sign
+                        in</a>
+                    <a href="/register" class="btn btn-primary">Sign Up</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    
+
+        <!-- ========== App Menu ========== -->
+        
+        <!-- Left Sidebar End -->
+        <!-- Vertical Overlay-->
+        
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Medical Department Discipline</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{{url_for('index')}}">Go Back!</a></li>
+                                        
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row g-4 mb-3">
+                        <div class="col-sm-auto">
+                            <div>
+                                <a href="apps-projects-create.html" class="btn btn-success"><i
+                                        class="ri-add-line align-bottom me-1"></i> Add New</a>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-sm-end gap-2">
+                                <div class="search-box ms-2">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <i class="ri-search-line search-icon"></i>
+                                </div>
+
+                                <select class="form-control w-md" data-choices data-choices-search-false>
+                                    <option value="All">All</option>
+                                    <option value="Today">Today</option>
+                                    <option value="Yesterday" selected>Yesterday</option>
+                                    <option value="Last 7 Days">Last 7 Days</option>
+                                    <option value="Last 30 Days">Last 30 Days</option>
+                                    <option value="This Month">This Month</option>
+                                    <option value="Last Year">Last Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of ENT</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-0">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/slack.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Face Area</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Do not take any steps without specialist supervision.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        80/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 80%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of Neurology</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-0">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/dribbble.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Head and Brain Area</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Do not take any steps without specialist supervision.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        95/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 95%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+
+
+                        <!-- end col -->
+
+
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of Orthopedics</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-0">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/mail_chimp.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Bone Fracture or Displacement</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Try not to move the effected area much and get specialist supervision ASAP.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        65/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 65%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+
+
+                        <!-- end col -->
+
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of Cardiology</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-0">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/slack2.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Heart and Chest</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Get in touch with specialist supervision ASAP.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        90/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 90%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of Nefrology</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-0">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/slack3.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Kidney & Hip Area</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Do not take any steps without specialist supervision.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        80/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 80%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-xxl-3 col-sm-6 project-card">
+                            <div class="card card-height-100">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column h-100">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <p class="text-muted mb-4">Department of Medicine</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="d-flex mb-2">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-sm">
+                                                    <span class="avatar-title bg-soft-warning rounded p-2">
+                                                        <img src="{{url_for('static',filename="assets/images/brands/slack4.png")}}" alt=""
+                                                            class="img-fluid p-1">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                        class="text-dark">Other</a></h5>
+                                                <p class="text-muted text-truncate-two-lines mb-3">Do not take any steps without specialist supervision.</p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-grow-1">
+                                                    <div>Criticality</div>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <div><i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                        50/100</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress progress-sm animated-progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 50%;">
+                                                </div><!-- /.progress-bar -->
+                                            </div><!-- /.progress -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+                                <div class="card-footer bg-transparent border-top-dashed py-2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="avatar-group">
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Darline Williams">
+                                                    
+                                                </a>
+                                                <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                    data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                    data-bs-placement="top" title="Add Members">
+                                                    <div class="avatar-xxs">
+                                                        <div
+                                                            class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="text-muted">
+                                                Get doctor Suggestion.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- end card footer -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    
+                    <!-- end row -->
+
+
+                    
+                    <!-- end row -->
+
+
+
+
+
+
+
+
+
+
+                    
+
+                    <div class="row g-0 text-center text-sm-start align-items-center mb-4">
+                        <div class="col-sm-6">
+                            <div>
+                                <p class="mb-sm-0 text-muted">Showing <span class="fw-semibold">1</span> to <span
+                                        class="fw-semibold">6</span> of <span
+                                        class="fw-semibold text-decoration-underline">6</span> entries</p>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-sm-6">
+                            <ul
+                                class="pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
+                                <li class="page-item disabled">
+                                    <a href="#" class="page-link">Previous</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item ">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">4</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">5</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">Next</a>
+                                </li>
+                            </ul>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- removeProjectModal -->
+    
+
+    <!-- Theme Settings -->
+    
+
+    <!-- JAVASCRIPT -->
+    <script src="{{url_for('static',filename='./assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{url_for('static',filename='./assets/js/plugins.js')}}"></script>
+    
+
+    <!--Swiper slider js-->
+    <script src="{{url_for('static',filename='./assets/libs/swiper/swiper-bundle.min.js')}}"></script>
+
+    <!-- landing init -->
+    <script src="{{url_for('static',filename='./assets/js/pages/landing.init.js')}}"></script>
+</body>
+
+</html>
