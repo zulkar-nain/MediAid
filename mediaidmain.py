@@ -35,8 +35,39 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     notes = db.relationship('Note')
 
+
     def __repr__(self) -> str:
         return f'{self.id} - {self.email} - {self.username}'
+
+class hospital(db.Model):
+    
+    id = db.Column(db.Integer, primary_key=True)
+    hos_name = db.Column(db.String(100))
+    hos_loc = db.Column(db.String(100))
+    hos_phone = db.Column(db.String(100))
+    hos_email = db.Column(db.String(100))
+    hos_website = db.Column(db.String(100))
+    hos_cap = db.Column(db.Integer)
+    hos_subs = db.Column(db.String(100))
+    hos_docs = db.Column(db.String(100))
+    hos_rev = db.Column(db.String(100))
+
+    def __repr__(self) -> str:
+        return f'{self.id} - {self.hos_name} - {self.hos_loc} - {self.hos_phone} - {self.hos_email} - {self.hos_website} - {self.hos_cap} - {self.hos_subs} - {self.hos_docs} - {self.hos_rev}'
+
+class docs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    doc_name = db.Column(db.String(100))
+    doc_loc = db.Column(db.String(100))
+    doc_phone = db.Column(db.String(100))
+    doc_email = db.Column(db.String(100))
+    doc_fee = db.Column(db.Integer)
+    doc_hos = db.Column(db.String(100))
+    doc_subs = db.Column(db.String(100))
+    doc_rev = db.Column(db.String(100))
+
+    def __repr__(self) -> str:
+        return f'{self.id} - {self.doc_name} - {self.doc_loc} - {self.doc_phone} - {self.doc_email} - {self.doc_fee} - {self.doc_hos} - {self.doc_subs} - {self.doc_rev}'
 
 
 class mediaid(db.Model):
@@ -53,6 +84,11 @@ class mediaid(db.Model):
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
+
+
+
+
+
 
 @login_manager.user_loader
 def load_user(user):
@@ -77,6 +113,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully.', category='success')
                 login_user(user, remember=True)
+                
                 return redirect(url_for('index'))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -90,6 +127,37 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route("/profiles", methods=['GET', 'POST'])
+@login_required
+def profiles():
+    return render_template("profiles.html", user=current_user)
+
+@app.route("/hospital-area", methods=['GET', 'POST'])
+@login_required
+def hospital_area():
+    return render_template("hospital-area.html", user=current_user)
+
+@app.route("/hospital-subject", methods=['GET', 'POST'])
+@login_required
+def hospital_subject():
+    return render_template("hospital-subject.html", user=current_user)
+
+@app.route("/doctor-area", methods=['GET', 'POST'])
+@login_required
+def doctor_area():
+    return render_template("doctor-area.html", user=current_user)
+
+@app.route("/doctor-subject", methods=['GET', 'POST'])
+@login_required
+def doctor_subject():
+    return render_template("doctor-subject.html", user=current_user)
+
+@app.route("/emergency-info", methods=['GET', 'POST'])
+@login_required
+def emer_info():
+    return render_template("emergencyinfo.html", user=current_user)
+    
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

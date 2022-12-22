@@ -1,0 +1,629 @@
+{% extends 'base1.html' %}
+
+{% block content%}
+
+
+
+                        <div class="row">
+                            <div class="col-xxl-12">
+                                <h5 class="mb-3">Hospitals Based on Area</h5>
+                                <div class="card">
+                                    <div class="card-body">                                       
+                                        
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs mb-3" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#home" role="tab" aria-selected="true">
+                                                    Dhanmondi 
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" href="#product1" role="tab" aria-selected="false">
+                                                    Mirpir    
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#messages" role="tab" aria-selected="false">
+                                                    Bashundhara R/A   
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" href="#settings" role="tab" aria-selected="false">
+                                                    Gulshan    
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Tab panes -->
+                                        <div class="tab-content  text-muted">
+                                            <div class="tab-pane" id="home" role="tabpanel" >
+
+                                                <div class="row g-4 mb-3">
+
+                                                <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Dhanmondi 27</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">Ibn Sina</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 1000-1200</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+
+                                                <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Dhanmondi 6/A</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">MediNova</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 300-500</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+                                                <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Dhanmondi 2</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">Popular Medical Collage</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 500-700</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+
+                                                
+
+
+
+
+                                            </div>
+                                                
+
+
+
+                                            </div>
+                                            <div class="tab-pane active" id="product1" role="tabpanel">
+                                                <div class="row g-4 mb-3">
+
+                                                    <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Mirpur 1</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">Ibn Sina</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 1200-1500</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+    
+    
+                                                <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Mirpir 2</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">BAVS Medical Collage</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 200-300</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+    
+    
+
+    
+    
+    
+    
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="messages" role="tabpanel">
+                                                <div class="row g-4 mb-3">
+
+                                                    
+                                                    <div class="col-xxl-3 col-sm-6 project-card">
+                                                        <div class="card card-height-20">
+                                                            <div class="card-body">
+                                                                <div class="d-flex flex-column h-100">
+                                                                    <div class="d-flex">
+                                                                        <div class="flex-grow-1">
+                                                                            <p class="text-muted mb-4">Block G</p>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="d-flex mb-2">
+                                                                        <div class="flex-shrink-0 me-3">
+                                                                            <div class="avatar-sm">
+                                                                                <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                    <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                        class="img-fluid p-1">
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex-grow-1">
+                                                                            <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                    class="text-dark">Apollo Hospital</a></h5>
+                                                                            <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 1000-1200</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                            
+                                                            </div>
+                                                            <!-- end card body -->
+                                                            <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-grow-1">
+                                                                        <div class="avatar-group">
+                                                                            <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                                data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                                data-bs-placement="top" title="Darline Williams">
+                                                                                
+                                                                            </a>
+                                                                            <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                                data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                                data-bs-placement="top" title="Add Members">
+                                                                                <div class="avatar-xxs">
+                                                                                    <div
+                                                                                        class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                        +
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0">
+                                                                        <div class="text-muted">
+                                                                            More about the hospital.
+                                                                        </div>
+                                                                    </div>
+                            
+                                                                </div>
+                            
+                                                            </div>
+                                                            <!-- end card footer -->
+                                                        </div>
+                                                        <!-- end card -->
+                                                    </div>
+    
+                                                    
+    
+    
+    
+    
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="settings" role="tabpanel">
+                                                <div class="row g-4 mb-3">
+
+
+                                                    <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Gulshan 1</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">Rita Hospital</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 150-200</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+    
+    
+                                                <div class="col-xxl-3 col-sm-6 project-card">
+                                                    <div class="card card-height-20">
+                                                        <div class="card-body">
+                                                            <div class="d-flex flex-column h-100">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted mb-4">Gulshan 2</p>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="d-flex mb-2">
+                                                                    <div class="flex-shrink-0 me-3">
+                                                                        <div class="avatar-sm">
+                                                                            <span class="avatar-title bg-soft-warning rounded p-0">
+                                                                                <img src="{{url_for('static',filename="assets/images/brands/hos.jpg")}}" alt=""
+                                                                                    class="img-fluid p-1">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html"
+                                                                                class="text-dark">Evercare</a></h5>
+                                                                        <p class="text-muted text-truncate-two-lines mb-3">Total Patient Capacity: <br> 200-250</p>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card body -->
+                                                        <div class="card-footer bg-transparent border-top-dashed py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="flex-grow-1">
+                                                                    <div class="avatar-group">
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Darline Williams">
+                                                                            
+                                                                        </a>
+                                                                        <a href="{{url_for('index')}}" class="avatar-group-item"
+                                                                            data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                                                            data-bs-placement="top" title="Add Members">
+                                                                            <div class="avatar-xxs">
+                                                                                <div
+                                                                                    class="avatar-title fs-16 rounded-circle bg-light border-dashed border text-primary">
+                                                                                    +
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="text-muted">
+                                                                        More about the hospital.
+                                                                    </div>
+                                                                </div>
+                        
+                                                            </div>
+                        
+                                                        </div>
+                                                        <!-- end card footer -->
+                                                    </div>
+                                                    <!-- end card -->
+                                                </div>
+    
+    
+    
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card-body -->
+                                </div><!-- end card -->
+                            </div><!--end col-->
+
+                            
+                        </div>
+
+                        
+
+
+
+
+
+
+
+
+
+                        
+
+
+{% endblock %}
+
