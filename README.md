@@ -115,7 +115,8 @@ http://127.0.0.1:5000/
 - `/doctor-area` - Doctor area
 - `/doctor-subject` - Doctor subject page
 - `/emergency-info` - Emergency information
-- `/medisugg` - Medical suggestion page
+- `/medisugg` - Searchable medical topics and specialties
+- `/topics/<slug>` - Educational medical specialty guide
 - `/logout` - Logout
 - `/about` - About MediAid
 - `/faq` - Frequently asked questions
@@ -134,7 +135,7 @@ http://127.0.0.1:5000/
 This project does not currently include a license file. If you plan to distribute or publish it publicly, add an appropriate open-source license.
 ## Pages and privacy
 
-The public website includes the home page, About, FAQ, Contact, and Privacy overview pages. Contact-form submissions are stored in the `contact_message` database table; do not use the form to share medical or other sensitive information. The application creates this table automatically when it starts.
+The public website includes the home page, About, FAQ, Contact, Privacy overview, emergency guidance, and searchable medical topic pages. Medical topics are general education and link to MedlinePlus for reviewed health information; they do not diagnose conditions or recommend treatment. Contact-form submissions are stored in the `contact_message` database table; do not use the form to share medical or other sensitive information. The application creates this table automatically when it starts.
 
 The account profile is available after signing in. The provider-assistance pages require an account, while general information and the public support pages can be browsed without one.
 

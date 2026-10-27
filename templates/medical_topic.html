@@ -1,0 +1,64 @@
+{% extends "base_site.html" %}
+{% block title %}{{ topic.title }} | MediAid{% endblock %}
+{% block description %}An educational introduction to {{ topic.title|lower }} and the role of this medical specialty.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <a class="topic-back-link" href="{{ url_for('medisugg') }}">← All medical topics</a>
+        <p class="eyebrow mt-4">{{ topic.category|upper }}</p>
+        <h1>{{ topic.title }}</h1>
+        <p class="page-lead">{{ topic.summary }}</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container topic-detail-container">
+        <article class="content-card topic-overview-card">
+            <span class="topic-card-icon" aria-hidden="true">{{ topic.icon }}</span>
+            <h2>What this specialty covers</h2>
+            <p>{{ topic.overview }}</p>
+            <p class="mb-0">{{ topic.scope }}</p>
+        </article>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6">
+                <article class="topic-action-card h-100">
+                    <span class="eyebrow">PREPARE FOR A CONVERSATION</span>
+                    <h2>Make your appointment more useful</h2>
+                    <ul>
+                        <li>Write down the questions you want to ask.</li>
+                        <li>Note any relevant medicines and allergies.</li>
+                        <li>Ask a qualified professional which care option is appropriate for you.</li>
+                    </ul>
+                </article>
+            </div>
+            <div class="col-md-6">
+                <article class="topic-action-card topic-action-accent h-100">
+                    <span class="eyebrow">CONTINUE EXPLORING</span>
+                    <h2>Read trusted health information</h2>
+                    <p>For detailed, reviewed information about symptoms, conditions, and tests, browse the U.S. National Library of Medicine’s MedlinePlus health topics.</p>
+                    <a class="topic-card-link" href="https://medlineplus.gov/healthtopics.html" target="_blank" rel="noopener noreferrer">
+                        Open MedlinePlus <span aria-hidden="true">↗</span>
+                        <span class="visually-hidden">(opens in a new tab)</span>
+                    </a>
+                </article>
+            </div>
+        </div>
+
+        <div class="topic-next-steps">
+            <div>
+                <h2>Looking for a care provider?</h2>
+                <p>Search MediAid’s directory for provider listings. Confirm details and availability with the provider.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-primary" href="{{ url_for('doctor_subject', q=topic.directory_term) }}">Find doctors</a>
+                <a class="btn btn-outline-primary" href="{{ url_for('hospital_subject', q=topic.directory_term) }}">Find hospitals</a>
+            </div>
+        </div>
+
+        <div class="notice-card topic-disclaimer">
+            <strong>Important:</strong>
+            <span>This page is for general education and does not provide medical advice, diagnose a condition, or recommend treatment. For personal guidance, speak with a qualified healthcare professional. For an emergency, contact your local emergency services now.</span>
+        </div>
+    </div>
+</section>
+{% endblock %}

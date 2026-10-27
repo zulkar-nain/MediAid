@@ -177,9 +177,95 @@ def search_directory(model, search, search_fields, sort_field):
     return query.order_by(getattr(model, sort_field)).all()
 
 
+MEDICAL_TOPICS = (
+    {
+        'slug': 'ear-nose-throat',
+        'title': 'Ear, nose, and throat (ENT)',
+        'category': 'Head and neck',
+        'icon': 'E',
+        'directory_term': 'ENT',
+        'summary': 'Learn about the specialty concerned with the ears, nose, throat, and related areas of the head and neck.',
+        'overview': 'Otolaryngology, commonly called ENT, is a medical and surgical specialty focused on the ears, nose, throat, and related structures of the head and neck.',
+        'scope': 'A qualified clinician can help decide whether an ENT professional or another type of care is appropriate for an individual concern.',
+    },
+    {
+        'slug': 'brain-and-nervous-system',
+        'title': 'Brain and nervous system',
+        'category': 'Nervous system',
+        'icon': 'N',
+        'directory_term': 'Neurology',
+        'summary': 'Get an introduction to neurology and the medical specialty focused on the brain, spinal cord, and nerves.',
+        'overview': 'Neurology is the medical specialty focused on the brain, spinal cord, and peripheral nerves.',
+        'scope': 'A qualified healthcare professional can assess symptoms and help determine the right clinician and next steps.',
+    },
+    {
+        'slug': 'bones-joints-and-muscles',
+        'title': 'Bones, joints, and muscles',
+        'category': 'Musculoskeletal system',
+        'icon': 'B',
+        'directory_term': 'Orthopedics',
+        'summary': 'Explore the musculoskeletal system and the specialty that cares for bones, joints, and related movement structures.',
+        'overview': 'Orthopedics focuses on the musculoskeletal system, including bones, joints, ligaments, tendons, and muscles.',
+        'scope': 'Different concerns may need different kinds of care. A qualified clinician can help assess an individual situation.',
+    },
+    {
+        'slug': 'heart-and-circulation',
+        'title': 'Heart and circulation',
+        'category': 'Circulatory system',
+        'icon': 'H',
+        'directory_term': 'Cardiology',
+        'summary': 'Learn about cardiology, the medical specialty focused on the heart and circulatory system.',
+        'overview': 'Cardiology is the medical specialty concerned with the heart and the circulatory system.',
+        'scope': 'This introduction cannot assess symptoms or determine urgency. For personal concerns, contact a qualified healthcare professional.',
+    },
+    {
+        'slug': 'kidneys-and-urinary-health',
+        'title': 'Kidneys and urinary health',
+        'category': 'Kidney health',
+        'icon': 'K',
+        'directory_term': 'Nephrology',
+        'summary': 'Explore kidney health and learn about nephrology, the specialty focused on kidney care.',
+        'overview': 'Nephrology is the medical specialty focused on the kidneys and their role in health.',
+        'scope': 'A qualified clinician can explain which tests or type of care may be relevant to an individual.',
+    },
+    {
+        'slug': 'general-health',
+        'title': 'General health',
+        'category': 'Primary care',
+        'icon': 'G',
+        'directory_term': 'Medicine',
+        'summary': 'Start with general medical information and learn about the role of primary and general healthcare.',
+        'overview': 'Primary and general healthcare can be a starting point for many everyday health questions and for coordinating care.',
+        'scope': 'A qualified healthcare professional who knows the person’s health history can help decide what care is appropriate.',
+    },
+)
+
+
 @app.route("/medisugg", methods=['GET', 'POST'])
 def medisugg():
-    return render_template("medisugg.html", user=current_user)
+    search = (request.args.get('q') or '').strip()[:100]
+    search_terms = search.casefold().split()
+    topics = [
+        topic for topic in MEDICAL_TOPICS
+        if all(
+            term in ' '.join((topic['title'], topic['category'], topic['summary'], topic['directory_term'])).casefold()
+            for term in search_terms
+        )
+    ]
+    return render_template("medical_topics.html", search=search, topics=topics)
+
+
+@app.route("/topics/<slug>")
+def medical_topic(slug):
+    topic = next((topic for topic in MEDICAL_TOPICS if topic['slug'] == slug), None)
+    if topic is None:
+        return render_template(
+            "error.html",
+            code=404,
+            title="Topic not found",
+            message="That medical topic is not available. Browse all topics to see the current guides.",
+        ), 404
+    return render_template("medical_topic.html", topic=topic)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

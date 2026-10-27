@@ -1,0 +1,64 @@
+{% extends "base_site.html" %}
+{% block title %}Explore medical topics | MediAid{% endblock %}
+{% block description %}Browse general health topics by medical specialty and prepare questions for a qualified professional.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">HEALTH INFORMATION</p>
+        <h1>Explore medical topics</h1>
+        <p class="page-lead">Learn what common medical specialties generally cover and prepare questions for a qualified professional.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container topic-container">
+        <div class="topic-safety-note" role="note">
+            <strong>Start with reliable information.</strong>
+            <span>These guides are educational only. They do not diagnose symptoms, recommend treatment, or assess how urgent your situation is.</span>
+            <a href="{{ url_for('emer_info') }}">Need emergency help? Read this first.</a>
+        </div>
+
+        <form class="topic-search" method="get" action="{{ url_for('medisugg') }}" role="search">
+            <label for="topic-search" class="form-label">Find a topic or specialty</label>
+            <div class="input-group">
+                <input id="topic-search" class="form-control" type="search" name="q" maxlength="100"
+                       value="{{ search }}" placeholder="Try heart, joints, or ENT"
+                       aria-describedby="topic-search-hint">
+                <button class="btn btn-primary" type="submit">Search topics</button>
+                {% if search %}
+                <a class="btn btn-outline-primary" href="{{ url_for('medisugg') }}">Clear</a>
+                {% endif %}
+            </div>
+            <div id="topic-search-hint" class="form-text">Search specialties and the areas they generally cover.</div>
+        </form>
+
+        <div class="topic-results-heading">
+            <h2>{{ "Search results" if search else "Browse by specialty" }}</h2>
+            <span>{{ topics|length }} {{ "result" if topics|length == 1 else "topics" }}</span>
+        </div>
+        {% if topics %}
+        <div class="row g-4">
+            {% for topic in topics %}
+            <div class="col-md-6 col-xl-4">
+                <article class="topic-card h-100">
+                    <span class="topic-card-icon" aria-hidden="true">{{ topic.icon }}</span>
+                    <p class="topic-card-category">{{ topic.category }}</p>
+                    <h3>{{ topic.title }}</h3>
+                    <p class="topic-card-description">{{ topic.summary }}</p>
+                    <a class="topic-card-link" href="{{ url_for('medical_topic', slug=topic.slug) }}">
+                        Explore {{ topic.title|lower }} <span aria-hidden="true">→</span>
+                    </a>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="topic-empty">
+            <h3>No matching topics</h3>
+            <p>Try a broader term such as “heart,” “bones,” or “general.”</p>
+            <a class="btn btn-outline-primary" href="{{ url_for('medisugg') }}">Browse all topics</a>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}
