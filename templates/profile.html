@@ -1,0 +1,29 @@
+{% extends "base_site.html" %}
+{% block title %}My profile | MediAid{% endblock %}
+{% block description %}View your MediAid account details.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">YOUR ACCOUNT</p>
+        <h1>My profile</h1>
+        <p class="page-lead">Your account details for MediAid.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container profile-container">
+        <article class="content-card profile-card">
+            <div class="profile-avatar" aria-hidden="true">{{ (current_user.username or current_user.email)[0]|upper }}</div>
+            <div>
+                <span class="card-kicker">SIGNED-IN ACCOUNT</span>
+                <h2>{{ current_user.username or "MediAid member" }}</h2>
+                <p class="text-muted mb-0">{{ current_user.email }}</p>
+            </div>
+            <a class="btn btn-outline-primary profile-signout" href="{{ url_for('logout') }}">Sign out</a>
+        </article>
+        <div class="notice-card mt-4">
+            <strong>Protect your privacy.</strong>
+            <span>Do not share your password or sensitive health information through MediAid.</span>
+        </div>
+    </div>
+</section>
+{% endblock %}

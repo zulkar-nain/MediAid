@@ -76,33 +76,19 @@ python -m pip install -r requirements.txt
 
 ## Database Setup
 
-This project connects to a MySQL database configured in `mediaidmain.py`:
-
-```python
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mediaidctrl:abcd1234@localhost:3306/mediaid'
-```
-
-Make sure MySQL is running and that a database named `mediaid` exists.
-
-You can create it with:
+The app connects to a MySQL database named `mediaid`. Make sure MySQL is running and that the database exists. Create it if needed:
 
 ```sql
 CREATE DATABASE mediaid;
 ```
 
-If needed, you can also create a matching MySQL user and adjust the connection string in the app.
+When you start the app with `python mediaidmain.py`, it creates any missing tables from the application models. This is safe to run repeatedly; it does not delete existing data.
 
-## Initializing the Database Tables
+If you already created the `user` table before this update, expand its password column once so it can store secure password hashes:
 
-The application defines models for users and hospital/doctor records, but the tables are not created automatically unless you run the following command in a Python shell:
-
-```python
-from mediaidmain import app, db
-with app.app_context():
-    db.create_all()
+```sql
+ALTER TABLE user MODIFY password VARCHAR(255) NULL;
 ```
-
-This will create the required tables in the configured database.
 
 ## Running the App
 
@@ -131,6 +117,11 @@ http://127.0.0.1:5000/
 - `/emergency-info` - Emergency information
 - `/medisugg` - Medical suggestion page
 - `/logout` - Logout
+- `/about` - About MediAid
+- `/faq` - Frequently asked questions
+- `/contact` - Website feedback form
+- `/privacy` - Privacy overview
+- `/emergency-info` - Public emergency guidance
 
 ## Notes
 
@@ -141,3 +132,10 @@ http://127.0.0.1:5000/
 ## License
 
 This project does not currently include a license file. If you plan to distribute or publish it publicly, add an appropriate open-source license.
+## Pages and privacy
+
+The public website includes the home page, About, FAQ, Contact, and Privacy overview pages. Contact-form submissions are stored in the `contact_message` database table; do not use the form to share medical or other sensitive information. The application creates this table automatically when it starts.
+
+The account profile is available after signing in. The provider-assistance pages require an account, while general information and the public support pages can be browsed without one.
+
+Hospital and doctor directory pages now read from their database tables instead of showing hard-coded sample cards. Add verified provider records to populate those pages. Emergency guidance is public and does not display unverified phone numbers.

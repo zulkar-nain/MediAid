@@ -1,0 +1,29 @@
+{% extends "base_site.html" %}
+{% block title %}Privacy overview | MediAid{% endblock %}
+{% block description %}Understand what information MediAid collects through account registration and its contact form.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">YOUR INFORMATION</p>
+        <h1>Privacy overview</h1>
+        <p class="page-lead">A plain-language summary of the information this project handles.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container policy-container">
+        <article class="content-card policy-card">
+            <p class="policy-updated">Project information</p>
+            <h2>What information is stored?</h2>
+            <p>When you create an account, MediAid stores the email address, username, and a password hash needed to provide sign-in. Contact-form submissions are stored in the application database with the name, email address, subject, message, and submission time.</p>
+            <h2>How is your password handled?</h2>
+            <p>Passwords are stored as one-way hashes rather than readable text. Never reuse a password you use for another service.</p>
+            <h2>What should I avoid sharing?</h2>
+            <p>Do not send medical records, symptoms requiring urgent attention, financial details, or other sensitive personal information through the contact form. MediAid is not an emergency or clinical service.</p>
+            <h2>Who can access this information?</h2>
+            <p>Information is stored in the project’s configured database. The application does not currently provide a public data export or deletion tool. Contact the project administrator to ask about account or message data.</p>
+            <h2>Important</h2>
+            <p class="mb-0">This page describes the current project behavior and is not legal advice or a complete privacy notice for a production healthcare service.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

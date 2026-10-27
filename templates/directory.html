@@ -1,0 +1,64 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title }} | MediAid{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">CARE DIRECTORY</p>
+        <h1>{{ title }}</h1>
+        <p class="page-lead">{{ description }} Please confirm details directly with providers before making care decisions.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container directory-container">
+        <form class="directory-search" method="get" action="{{ request.path }}">
+            <label class="form-label" for="directory-search">{{ search_label }}</label>
+            <div class="input-group">
+                <input class="form-control" id="directory-search" name="q" type="search" maxlength="100" value="{{ search }}" placeholder="{{ search_label }}">
+                <button class="btn btn-primary" type="submit">Search</button>
+                {% if search %}
+                <a class="btn btn-outline-primary" href="{{ request.path }}">Clear</a>
+                {% endif %}
+            </div>
+        </form>
+
+        {% if records %}
+        <p class="directory-count">{{ records|length }} {{ "hospital" if kind == "hospital" else "doctor" }} listing{{ "" if records|length == 1 else "s" }}</p>
+        <div class="row g-4">
+            {% for record in records %}
+            <div class="col-md-6 col-xl-4">
+                <article class="directory-card h-100">
+                    <span class="directory-type">{{ "HOSPITAL" if kind == "hospital" else "DOCTOR" }}</span>
+                    <h2>{{ record.hos_name if kind == "hospital" else record.doc_name }}</h2>
+                    <dl class="directory-details">
+                        {% if kind == "hospital" %}
+                            {% if record.hos_loc %}<div><dt>Area</dt><dd>{{ record.hos_loc }}</dd></div>{% endif %}
+                            {% if record.hos_subs %}<div><dt>Specialties</dt><dd>{{ record.hos_subs }}</dd></div>{% endif %}
+                            {% if record.hos_phone %}<div><dt>Phone</dt><dd>{{ record.hos_phone }}</dd></div>{% endif %}
+                            {% if record.hos_email %}<div><dt>Email</dt><dd>{{ record.hos_email }}</dd></div>{% endif %}
+                            {% if record.hos_website %}<div><dt>Website</dt><dd>{{ record.hos_website }}</dd></div>{% endif %}
+                            {% if record.hos_cap %}<div><dt>Capacity</dt><dd>{{ record.hos_cap }}</dd></div>{% endif %}
+                        {% else %}
+                            {% if record.doc_subs %}<div><dt>Specialty</dt><dd>{{ record.doc_subs }}</dd></div>{% endif %}
+                            {% if record.doc_loc %}<div><dt>Area</dt><dd>{{ record.doc_loc }}</dd></div>{% endif %}
+                            {% if record.doc_hos %}<div><dt>Hospital</dt><dd>{{ record.doc_hos }}</dd></div>{% endif %}
+                            {% if record.doc_phone %}<div><dt>Phone</dt><dd>{{ record.doc_phone }}</dd></div>{% endif %}
+                            {% if record.doc_email %}<div><dt>Email</dt><dd>{{ record.doc_email }}</dd></div>{% endif %}
+                            {% if record.doc_fee is not none %}<div><dt>Fee</dt><dd>{{ record.doc_fee }}</dd></div>{% endif %}
+                        {% endif %}
+                    </dl>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="directory-empty">
+            <span class="directory-empty-mark" aria-hidden="true">+</span>
+            <h2>{% if search %}No matching listings{% else %}No listings available yet{% endif %}</h2>
+            <p>{% if search %}Try a different search term.{% else %}There are no verified listings in this directory yet. Please check back later.{% endif %}</p>
+        </div>
+        {% endif %}
+        <p class="directory-disclaimer">Directory information can change. Confirm provider services, contact details, and availability directly. MediAid is not an emergency service.</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title }} | MediAid{% endblock %}
+{% block content %}
+<section class="page-hero error-page">
+    <div class="container page-hero-content">
+        <p class="eyebrow">ERROR {{ code }}</p>
+        <h1>{{ title }}</h1>
+        <p class="page-lead">{{ message }}</p>
+        <a class="btn btn-primary mt-3" href="{{ url_for('index') }}">Return to MediAid home</a>
+    </div>
+</section>
+{% endblock %}

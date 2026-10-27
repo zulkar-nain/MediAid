@@ -1,0 +1,43 @@
+{% extends "base_site.html" %}
+{% block title %}{{ "Create account" if registering else "Sign in" }} | MediAid{% endblock %}
+{% block description %}{{ "Create a MediAid account." if registering else "Sign in to your MediAid account." }}{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">{{ "JOIN MEDIAID" if registering else "WELCOME BACK" }}</p>
+        <h1>{{ "Create your account" if registering else "Sign in to MediAid" }}</h1>
+        <p class="page-lead">{{ "Create an account to access provider-assistance pages." if registering else "Sign in to continue to provider-assistance pages." }}</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container auth-container">
+        <div class="auth-card">
+            <form method="post" action="{{ url_for('register' if registering else 'login') }}">
+                {% if registering %}
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" id="username" name="username" type="text" maxlength="100" autocomplete="username" required value="{{ request.form.get('username', '') }}">
+                </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label class="form-label" for="useremail">Email address</label>
+                    <input class="form-control" id="useremail" name="useremail" type="email" maxlength="100" autocomplete="email" required value="{{ request.form.get('useremail', '') }}">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="userpassword">Password</label>
+                    <input class="form-control" id="userpassword" name="userpassword" type="password" maxlength="256" autocomplete="{{ 'new-password' if registering else 'current-password' }}" required>
+                </div>
+                <button class="btn btn-primary btn-lg w-100" type="submit">{{ "Create account" if registering else "Sign in" }}</button>
+            </form>
+            <p class="auth-switch mb-0">
+                {% if registering %}
+                Already have an account? <a href="{{ url_for('login') }}">Sign in</a>
+                {% else %}
+                New to MediAid? <a href="{{ url_for('register') }}">Create an account</a>
+                {% endif %}
+            </p>
+        </div>
+        <p class="auth-disclaimer">Do not share your password or sensitive health information.</p>
+    </div>
+</section>
+{% endblock %}

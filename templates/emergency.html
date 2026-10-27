@@ -1,0 +1,30 @@
+{% extends "base_site.html" %}
+{% block title %}Emergency help | MediAid{% endblock %}
+{% block description %}What to do if you need urgent medical assistance.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">URGENT CARE</p>
+        <h1>If you need emergency help, act now.</h1>
+        <p class="page-lead">MediAid is not an emergency service. Do not wait for a response from this website.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container emergency-container">
+        <div class="emergency-alert" role="alert">
+            <h2>Contact emergency services now</h2>
+            <p>Call the emergency number for your location or go to the nearest emergency department. If you cannot make the call, ask someone nearby to contact emergency services for you.</p>
+            <p class="mb-0">Emergency numbers and hospital contacts vary by location. Use a number you can verify locally; this page does not provide unverified contact details.</p>
+        </div>
+        <article class="content-card mt-4">
+            <h2>When speaking with emergency services</h2>
+            <ul class="emergency-list">
+                <li>Give your exact location and a callback number.</li>
+                <li>Briefly describe what is happening and when it started.</li>
+                <li>Follow the emergency operator’s instructions.</li>
+            </ul>
+            <p class="mb-0 text-muted">This information is not a substitute for emergency services or professional medical advice.</p>
+        </article>
+    </div>
+</section>
+{% endblock %}

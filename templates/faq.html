@@ -1,0 +1,63 @@
+{% extends "base_site.html" %}
+{% block title %}Frequently asked questions | MediAid{% endblock %}
+{% block description %}Answers about using MediAid, its healthcare information, and your account.{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">HELP CENTER</p>
+        <h1>Frequently asked questions</h1>
+        <p class="page-lead">Quick answers to help you use MediAid with confidence.</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container faq-container">
+        <div class="accordion faq-accordion" id="faqList">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq-health-heading">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-health" aria-expanded="true" aria-controls="faq-health">Can MediAid diagnose a health condition?</button>
+                </h2>
+                <div id="faq-health" class="accordion-collapse collapse show" aria-labelledby="faq-health-heading" data-bs-parent="#faqList">
+                    <div class="accordion-body">No. MediAid provides general information and tools for exploring care. Only a qualified healthcare professional can assess your situation and provide personalized medical advice.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq-emergency-heading">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-emergency" aria-expanded="false" aria-controls="faq-emergency">What should I do in an emergency?</button>
+                </h2>
+                <div id="faq-emergency" class="accordion-collapse collapse" aria-labelledby="faq-emergency-heading" data-bs-parent="#faqList">
+                    <div class="accordion-body">Do not wait for a response from this website. Call your local emergency services or go to the nearest emergency department immediately. <a href="{{ url_for('emer_info') }}">Read emergency guidance</a>.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq-listings-heading">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-listings" aria-expanded="false" aria-controls="faq-listings">Are provider details and availability guaranteed to be current?</button>
+                </h2>
+                <div id="faq-listings" class="accordion-collapse collapse" aria-labelledby="faq-listings-heading" data-bs-parent="#faqList">
+                    <div class="accordion-body">No. Contact details, services, and availability can change. Confirm information directly with a provider before travelling or making care decisions.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq-account-heading">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-account" aria-expanded="false" aria-controls="faq-account">Do I need an account?</button>
+                </h2>
+                <div id="faq-account" class="accordion-collapse collapse" aria-labelledby="faq-account-heading" data-bs-parent="#faqList">
+                    <div class="accordion-body">You can browse public information without an account. Some provider-assistance pages require you to sign in. You can create an account from the navigation bar.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq-contact-heading">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-contact" aria-expanded="false" aria-controls="faq-contact">How can I send feedback?</button>
+                </h2>
+                <div id="faq-contact" class="accordion-collapse collapse" aria-labelledby="faq-contact-heading" data-bs-parent="#faqList">
+                    <div class="accordion-body">Use the <a href="{{ url_for('contact') }}">contact form</a> to send site feedback. Please do not include medical records, passwords, or other sensitive health information.</div>
+                </div>
+            </div>
+        </div>
+        <div class="faq-contact-card">
+            <h2>Still have a question?</h2>
+            <p class="mb-3">Send a message about the website and we’ll record your feedback.</p>
+            <a class="btn btn-primary" href="{{ url_for('contact') }}">Contact MediAid</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
