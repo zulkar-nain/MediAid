@@ -53,25 +53,25 @@ cd MediAid
 2. Create and activate a virtual environment:
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
 On Windows:
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 On macOS/Linux:
 
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 3. Install the required packages:
 
 ```bash
-pip install flask flask_sqlalchemy flask-login pymysql sqlalchemy
+python -m pip install -r requirements.txt
 ```
 
 ## Database Setup
