@@ -76,19 +76,44 @@ python -m pip install -r requirements.txt
 
 ## Database Setup
 
-The app connects to a MySQL database named `mediaid`. Make sure MySQL is running and that the database exists. Create it if needed:
+The app uses MySQL/MariaDB by default. Make sure the server and `mediaid` database exist. Create the database if needed:
 
 ```sql
 CREATE DATABASE mediaid;
 ```
 
-When you start the app with `python mediaidmain.py`, it creates any missing tables from the application models. This is safe to run repeatedly; it does not delete existing data.
+Configure the connection string and a persistent secret key in your shell before starting the app. Do not commit credentials or secret keys:
+
+```powershell
+$env:MEDIAID_DATABASE_URI = "mysql+pymysql://USER:PASSWORD@127.0.0.1:3306/mediaid"
+$env:MEDIAID_SECRET_KEY = "<a long random value>"
+```
+
+For local development without a MySQL server, you can instead set `MEDIAID_DATABASE_URI` to `sqlite:///mediaid-local.sqlite`.
+
+When you start the app with `python mediaidmain.py`, it creates missing tables and adds the admin-related columns to existing provider and user tables. This is safe to run repeatedly and does not delete existing data. Back up the database before deploying schema changes.
 
 If you already created the `user` table before this update, expand its password column once so it can store secure password hashes:
 
 ```sql
 ALTER TABLE user MODIFY password VARCHAR(255) NULL;
 ```
+
+## Creating the Initial Super Administrator
+
+After configuring the database connection, bootstrap the first global administrator through Flask's interactive CLI:
+
+```powershell
+flask --app mediaidmain create-super-admin
+```
+
+The command prompts for an email, username, and password. Use a unique password with at least 12 characters. It creates a new account or promotes the matching existing account. There is no public admin-registration page.
+
+## Administration and Privacy
+
+The super administrator can create organizations, add existing registered accounts to organizations, assign tenant-admin roles, manage provider listings, inspect contact messages, and review security/admin audit events. Global administrators can also view private user notes; opening that page is recorded as an audit event.
+
+Tenant administrators are restricted to their organization. They can add existing accounts to that organization, manage its provider listings, and promote members to tenant admins. Users may belong to multiple organizations and switch their active organization from the site navigation; a submitted organization is accepted only when the account belongs to it. Tenant administrators can see basic account details for members of their organization but **cannot view private user notes**. The app records authentication security and administrative events; it does not record general page browsing.
 
 ## Running the App
 
@@ -123,11 +148,20 @@ http://127.0.0.1:5000/
 - `/contact` - Website feedback form
 - `/privacy` - Privacy overview
 - `/emergency-info` - Public emergency guidance
+- `/admin` - Administration dashboard (authorized accounts only)
+- `/admin/organizations` - Organization management (super admin only)
+- `/admin/members` - Active organization membership and roles
+- `/admin/providers/hospitals` - Hospital listing management
+- `/admin/providers/doctors` - Doctor listing management
+- `/admin/users` - Authorized account profile metadata
+- `/admin/audit` - Security and administration audit events
+- `/admin/notes` - Private notes (super admin only; access audited)
+- `/admin/messages` - Contact inbox (super admin only)
 
 ## Notes
 
 - The app currently uses `debug=False` in the main entry point. For local development, you may change it to `debug=True` if needed.
-- The database credentials and secret key are hardcoded in the app, so they should be moved to environment variables before production deployment.
+- Set a persistent `MEDIAID_SECRET_KEY` and a production database URI through environment variables. Keep them out of source control.
 - This project appears to be a template-driven Flask app using static assets and HTML templates under the `templates/` folder.
 
 ## License

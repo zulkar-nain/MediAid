@@ -1,0 +1,31 @@
+{% extends "base_site.html" %}
+{% block title %}Organizations | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">GLOBAL ADMINISTRATION</p>
+    <h1 class="mb-4">Organizations</h1>
+    <form method="post" class="card card-body mb-4">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label class="form-label" for="organization-name">Create an organization</label>
+        <div class="input-group">
+            <input class="form-control" id="organization-name" name="name" maxlength="120" required>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+    <div class="list-group">
+        {% for organization in organizations %}
+        <div class="list-group-item d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <span>{{ organization.name }}</span>
+            <form method="post" action="{{ url_for('select_admin_tenant') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="organization_id" value="{{ organization.id }}">
+                <button class="btn btn-sm btn-outline-primary" type="submit">Select organization</button>
+            </form>
+        </div>
+        {% else %}
+        <p class="text-muted">No organizations have been created.</p>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary mt-4" href="{{ url_for('admin_dashboard') }}">Back to administration</a>
+</div></section>
+{% endblock %}

@@ -18,7 +18,10 @@
                 <h2>{{ current_user.username or "MediAid member" }}</h2>
                 <p class="text-muted mb-0">{{ current_user.email }}</p>
             </div>
-            <a class="btn btn-outline-primary profile-signout" href="{{ url_for('logout') }}">Sign out</a>
+            <form method="post" action="{{ url_for('logout') }}" class="profile-signout">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="btn btn-outline-primary" type="submit">Sign out</button>
+            </form>
         </article>
         <div class="notice-card mt-4">
             <strong>Protect your privacy.</strong>

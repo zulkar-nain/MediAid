@@ -1,0 +1,19 @@
+{% extends "base_site.html" %}
+{% block title %}Edit {{ model_name|lower }} | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <h1 class="mb-4">Edit {{ model_name|lower }} listing</h1>
+    <form method="post" class="card card-body">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="row g-3">
+            {% for field, info in fields.items() %}
+            <div class="col-md-6">
+                <label class="form-label" for="{{ field }}">{{ info[0] }}{% if field in ('hos_name', 'doc_name') %} *{% endif %}</label>
+                <input class="form-control" id="{{ field }}" name="{{ field }}" type="{{ 'number' if field in ('hos_cap', 'doc_fee') else 'text' }}" value="{{ record|attr(field) if record|attr(field) is not none else '' }}" {% if field in ('hos_cap', 'doc_fee') %}min="0" step="1"{% elif info[1] %}maxlength="{{ info[1] }}"{% endif %} {% if field in ('hos_name', 'doc_name') %}required{% endif %}>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="d-flex gap-2 mt-4"><button class="btn btn-primary" type="submit">Save changes</button><a class="btn btn-outline-secondary" href="{{ url_for('admin_providers', kind=kind) }}">Cancel</a></div>
+    </form>
+</div></section>
+{% endblock %}

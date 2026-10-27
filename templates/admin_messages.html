@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}Contact messages | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">GLOBAL ADMINISTRATION</p><h1 class="mb-4">Contact messages</h1>
+    {% for message in messages %}
+    <article class="card card-body mb-3">
+        <div class="d-flex flex-wrap justify-content-between gap-2"><h2 class="h5 mb-0">{{ message.subject }}</h2><time class="text-muted">{{ message.created_at }}</time></div>
+        <p class="mb-1">{{ message.name }} &lt;{{ message.email }}&gt;</p><p class="mb-0">{{ message.message }}</p>
+    </article>
+    {% else %}<p class="text-muted">No messages have been received.</p>{% endfor %}
+</div></section>
+{% endblock %}

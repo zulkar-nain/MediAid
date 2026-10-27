@@ -1,0 +1,39 @@
+{% extends "base_site.html" %}
+{% block title %}Administration | MediAid{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-content">
+        <p class="eyebrow">ADMINISTRATION</p>
+        <h1>Manage MediAid</h1>
+        <p class="page-lead">{% if active_organization %}{{ active_organization.name }}{% else %}Global administration{% endif %}</p>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container">
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><div class="text-muted">Accounts</div><strong class="fs-3">{{ users_count }}</strong></div></div></div>
+            <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><div class="text-muted">Organizations</div><strong class="fs-3">{{ organizations_count }}</strong></div></div></div>
+            <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><div class="text-muted">Hospitals</div><strong class="fs-3">{{ hospitals_count }}</strong></div></div></div>
+            <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><div class="text-muted">Doctors</div><strong class="fs-3">{{ doctors_count }}</strong></div></div></div>
+        </div>
+        {% if is_super_admin %}
+        <div class="alert alert-info">Super-admin access includes all organizations and private user notes. Access to private notes is audited.</div>
+        {% else %}
+        <div class="alert alert-secondary">Tenant administrators can manage this organization’s members and listings. Private user notes are not available to tenant admins.</div>
+        {% endif %}
+        <h2 class="h4 mt-4">Administration tools</h2>
+        <div class="list-group">
+            {% if is_super_admin %}<a class="list-group-item list-group-item-action" href="{{ url_for('admin_organizations') }}">Organizations</a>{% endif %}
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_members') }}">Organization members and roles</a>
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_users') }}">Account profiles</a>
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_providers', kind='hospitals') }}">Manage hospital listings</a>
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_providers', kind='doctors') }}">Manage doctor listings</a>
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_audit') }}">Security and admin audit events</a>
+            {% if is_super_admin %}
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_messages') }}">Contact messages ({{ messages_count }})</a>
+            <a class="list-group-item list-group-item-action" href="{{ url_for('admin_notes') }}">Private user notes ({{ notes_count }})</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

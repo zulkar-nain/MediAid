@@ -33,8 +33,31 @@
                 </ul>
                 <div class="d-flex flex-column flex-lg-row gap-2">
                     {% if current_user.is_authenticated %}
+                    {% if is_site_admin %}
+                    <a class="btn btn-outline-primary" href="{{ url_for('admin_dashboard') }}">Admin</a>
+                    {% endif %}
+                    {% if is_super_admin or tenant_memberships %}
+                    <form method="post" action="{{ url_for('select_admin_tenant') }}" class="d-flex gap-2">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <select class="form-select" name="organization_id" aria-label="Active organization" onchange="this.form.submit()">
+                            {% if is_super_admin %}
+                            <option value="" {{ 'selected' if not active_organization else '' }}>All organizations</option>
+                            {% for organization in admin_organizations %}
+                            <option value="{{ organization.id }}" {{ 'selected' if active_organization and organization.id == active_organization.id else '' }}>{{ organization.name }}</option>
+                            {% endfor %}
+                            {% else %}
+                            {% for membership in tenant_memberships %}
+                            <option value="{{ membership.organization_id }}" {{ 'selected' if active_organization and membership.organization_id == active_organization.id else '' }}>{{ membership.organization.name }}</option>
+                            {% endfor %}
+                            {% endif %}
+                        </select>
+                    </form>
+                    {% endif %}
                     <a class="btn btn-outline-primary" href="{{ url_for('profiles') }}">My profile</a>
-                    <a class="btn btn-primary" href="{{ url_for('logout') }}">Sign out</a>
+                    <form method="post" action="{{ url_for('logout') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button class="btn btn-primary" type="submit">Sign out</button>
+                    </form>
                     {% else %}
                     <a class="btn btn-outline-primary" href="{{ url_for('login') }}">Sign in</a>
                     <a class="btn btn-primary" href="{{ url_for('register') }}">Create account</a>

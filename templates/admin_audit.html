@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}Audit events | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">SECURITY AND ADMINISTRATION</p><h1 class="mb-4">Audit events</h1>
+    <div class="table-responsive"><table class="table table-striped align-middle">
+        <thead><tr><th>When</th><th>Actor</th><th>Organization</th><th>Action</th><th>Target</th></tr></thead>
+        <tbody>{% for event in events %}
+        <tr><td>{{ event.created_at }}</td><td>{{ event.actor.email if event.actor else 'System/unknown' }}</td><td>{{ event.organization.name if event.organization else 'Global' }}</td><td>{{ event.action }}</td><td>{{ event.target_type or '' }} {{ event.target_id or '' }}</td></tr>
+        {% else %}<tr><td colspan="5" class="text-muted">No audit events have been recorded.</td></tr>{% endfor %}</tbody>
+    </table></div>
+</div></section>
+{% endblock %}

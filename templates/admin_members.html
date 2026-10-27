@@ -1,0 +1,35 @@
+{% extends "base_site.html" %}
+{% block title %}Members | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">{{ organization.name }}</p>
+    <h1 class="mb-4">Members and roles</h1>
+    <form method="post" class="card card-body mb-4">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <h2 class="h5">Add an existing account</h2>
+        <p class="text-muted">The account must register before you can add it to this organization.</p>
+        <div class="row g-3 align-items-end">
+            <div class="col-md-7"><label class="form-label" for="member-email">Account email</label><input class="form-control" id="member-email" name="email" type="email" maxlength="100" required></div>
+            <div class="col-md-3"><label class="form-label" for="member-role">Role</label><select class="form-select" id="member-role" name="role"><option value="member">Member</option><option value="admin">Tenant admin</option></select></div>
+            <div class="col-md-2"><button class="btn btn-primary w-100" type="submit">Add</button></div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead><tr><th>Username</th><th>Email</th><th>Role</th><th>Change role</th></tr></thead>
+            <tbody>
+            {% for membership in memberships %}
+            <tr>
+                <td>{{ membership.user.username }}</td><td>{{ membership.user.email }}</td><td>{{ membership.role|title }}</td>
+                <td><form method="post" action="{{ url_for('change_member_role', membership_id=membership.id) }}" class="d-flex gap-2">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <select class="form-select form-select-sm" name="role" aria-label="Role for {{ membership.user.username }}"><option value="member" {{ 'selected' if membership.role == 'member' else '' }}>Member</option><option value="admin" {{ 'selected' if membership.role == 'admin' else '' }}>Tenant admin</option></select>
+                    <button class="btn btn-sm btn-outline-primary" type="submit">Save</button>
+                </form></td>
+            </tr>
+            {% else %}<tr><td colspan="4" class="text-muted">No accounts are assigned to this organization.</td></tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div></section>
+{% endblock %}

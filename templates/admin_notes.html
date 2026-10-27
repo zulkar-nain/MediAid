@@ -1,0 +1,11 @@
+{% extends "base_site.html" %}
+{% block title %}Private user notes | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">SUPER-ADMIN ONLY · ACCESS AUDITED</p><h1 class="mb-3">Private user notes</h1>
+    <div class="alert alert-warning">These notes may contain sensitive personal information. Tenant administrators cannot view them. This access has been recorded in the audit log.</div>
+    {% for note in notes %}
+    <article class="card card-body mb-3"><div class="d-flex flex-wrap justify-content-between gap-2"><strong>{{ note.user.email }}</strong><time class="text-muted">{{ note.date }}</time></div><p class="mb-0 mt-2">{{ note.data }}</p></article>
+    {% else %}<p class="text-muted">No private notes were found.</p>{% endfor %}
+</div></section>
+{% endblock %}

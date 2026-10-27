@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}Account profiles | MediAid{% endblock %}
+{% block content %}
+<section class="content-section"><div class="container">
+    <p class="eyebrow">ACCOUNT MANAGEMENT</p>
+    <h1 class="mb-4">Account profiles</h1>
+    {% if is_super_admin %}<p class="text-muted">Global accounts are shown. Private notes are kept separate and available only in the super-admin notes view.</p>{% else %}<p class="text-muted">Only accounts assigned to your active organization are shown. Private notes are not accessible to tenant administrators.</p>{% endif %}
+    <div class="table-responsive"><table class="table table-striped">
+        <thead><tr><th>Username</th><th>Email</th>{% if is_super_admin %}<th>Global super admin</th>{% endif %}</tr></thead>
+        <tbody>{% for user in users %}<tr><td>{{ user.username }}</td><td>{{ user.email }}</td>{% if is_super_admin %}<td>{{ 'Yes' if user.is_super_admin else 'No' }}</td>{% endif %}</tr>{% else %}<tr><td colspan="3" class="text-muted">No accounts found.</td></tr>{% endfor %}</tbody>
+    </table></div>
+</div></section>
+{% endblock %}
